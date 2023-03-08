@@ -67,4 +67,24 @@ public class MainController {
 	public Course updateCourse(@RequestBody Course course) {
 		return courseRepo.save(course);
 	}
+	
+	@GetMapping("/course/{id}/delete")
+	public String deleteCourseById(@PathVariable("id") int id) {
+		try {
+			courseRepo.deleteById(id);
+		}catch(Exception e) {
+			return "unsuccessful";
+		}
+		return "successful";
+	}
+	
+	@GetMapping("/student/{id}/delete")
+	public String deleteStudentById(@PathVariable("id") int id) {
+		try {
+			studentRepo.deleteById(id);
+		}catch(Exception e) {
+			return "unsuccessful";
+		}
+		return "successful";
+	}
 }
